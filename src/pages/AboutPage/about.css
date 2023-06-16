@@ -1,0 +1,45 @@
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .text-blob {
+    flex-basis: 45%;
+    margin-right: 5%;
+    color: white;
+  }
+  
+  .text-blob h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .text-blob p {
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  .photos {
+    flex-basis: 45%;
+  }
+  
+  .photos img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .about {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .text-blob,
+    .photos {
+      flex-basis: 100%;
+      margin-right: 0;
+    }
+  }
