@@ -40,7 +40,6 @@ function About() {
 };
 
 export default About;
-
 const AboutContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -56,6 +55,9 @@ const TextBlobContainer = styled.div`
 
   @media (max-width: 768px) {
     max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 2rem;
+    flex-basis: 80%;
   }
 
   @media (min-width: 769px) {
@@ -68,15 +70,27 @@ const TextBlobContainer = styled.div`
 const Title = styled.h2`
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: #EDB935;
+  text-align: center;
 `;
 
 const Paragraph = styled.p`
   line-height: 1.5;
   margin-bottom: 1.5rem;
+  text-align: center;
+  margin-left: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 const PhotosContainer = styled.div`
   flex-basis: 45%;
+
+  @media (max-width: 768px) {
+    flex-basis: 100%;
+  }
 `;
 
 const Image = styled.img`
@@ -84,4 +98,8 @@ const Image = styled.img`
   height: auto;
   margin-bottom: 1.5rem;
   visibility: ${props => props.isVisible ? "visible" : "hidden"};
+
+  @media (max-width: 768px) {
+    margin: 0 auto;
+  }
 `;
