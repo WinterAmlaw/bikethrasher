@@ -1,14 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { links, sidebarBackgrounds } from '../utils/constants' 
+import { ImagesContext } from '../context/ImageContext';
 import logo from '../assets/logo.jpg'
 import styled from 'styled-components'
+
 
 const Sidebar = () => {
   const isSidebarOpen = true
   const location = useLocation()
   const currentPathname = location.pathname
   const currentBackground = sidebarBackgrounds[currentPathname]
+  const { loadedImages } = useContext(ImagesContext)
   const [currentBackgroundPath, setCurrentBackgroundPath] = useState('')
   
   const handleBackground = async () => {
@@ -21,7 +24,7 @@ const Sidebar = () => {
       console.error(error);
     }
   };
-
+  console.log(loadedImages);
   useEffect(() => {
     handleBackground();
   }, [currentPathname]);
