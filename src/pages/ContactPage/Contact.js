@@ -25,8 +25,8 @@ const Contact = () => {
           setEmail('')
           setMessage('')
           setPhone('')
-          setShowConfirmation(true) // Set state to show confirmation message
-        setTimeout(() => setShowConfirmation(false), 5000) // Hide confirmation message after 5 seconds
+          setShowConfirmation(true) 
+        setTimeout(() => setShowConfirmation(false), 5000) 
       }, (error) => {
           console.log(error.text)
       })

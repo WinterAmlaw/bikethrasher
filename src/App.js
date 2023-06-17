@@ -1,5 +1,4 @@
 import React from 'react'
-// import NavBar from './NavBar'
 import Sidebar from './components/Sidebar'
 import Music from './pages/MusicPage/Music'
 import Shows from './pages/ShowsPage/Shows'
@@ -7,8 +6,8 @@ import Merch from './pages/MerchPage/Merch'
 import Videos from './pages/VideosPage/Videos'
 import About from './pages/AboutPage/About'
 import Contact from './pages/ContactPage/Contact'
-// import Admin from './pages/AdminPage/Admin'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+
 const shows = [
   {
     id: 1,
@@ -29,7 +28,7 @@ const shows = [
     location: 'London'
   }
 ];
-const PageRouter = () => {
+const App = () => {
   return (
     <Router>
       <div className='container'>
@@ -38,9 +37,6 @@ const PageRouter = () => {
         </div>
         <main>
           <Routes>
-            {/* <Route path="/" exact>
-              //default page
-            </Route> */}
             <Route path="/" element={<Music />} />
             <Route path="/shows" element={<Shows shows={shows}/>} />
             <Route path="/merch" element={<Merch />} />
@@ -54,4 +50,4 @@ const PageRouter = () => {
   )
 }
 
-export default PageRouter;
+export default App;

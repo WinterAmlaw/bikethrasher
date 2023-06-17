@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { aboutQuery } from './AboutQuery';
-import Api from '../../services/Api';
-import {ABOUT} from '../../utils/constants'
+import ContentfulApi from '../../services/ContentfulApi';
+import { ABOUT } from '../../utils/constants'
 import styled from 'styled-components';
 
 
 function About() {
-  const page = Api(aboutQuery, ABOUT)
+  const page = ContentfulApi(aboutQuery, ABOUT)
   const { aboutSection, img1 } = page
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,14 +17,11 @@ function About() {
 
   return (
     <>
-      {/* <h1>About Us</h1> */}
       <AboutContainer>
-
         <TextBlobContainer>
           <Title>About Us</Title>
           <Paragraph>{aboutSection}</Paragraph>
         </TextBlobContainer>
-        
         <PhotosContainer>
           <Image 
             isVisible={isLoaded}
@@ -32,8 +29,7 @@ function About() {
             src={img1 && img1.url} 
             alt="description" 
           />
-        </PhotosContainer>
-        
+        </PhotosContainer>        
       </AboutContainer>
     </>
   );

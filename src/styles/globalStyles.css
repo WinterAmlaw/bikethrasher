@@ -30,7 +30,7 @@ body {
 }
 
 .container {
-  min-height: 100vh; /* set the container height to full viewport */
+  min-height: 100vh; 
   display: flex;
   flex-wrap: wrap;
   overflow: visible !important;
@@ -38,27 +38,23 @@ body {
 
 .sidebar {
   width: 33%;
-  /* other sidebar styles... */
 }
 
 main {
   margin-left: 33%;
   width: calc(100% - 33%);
-  /* other main content styles... */
   overflow: visible !important;
 }
 
 @media screen and (max-width: 1000px) {
   .sidebar {
-    width: 100%; /* reset sidebars width on small screens */
-    /* position: fixed !important; */
+    width: 100%; 
   }
   main {
     margin-top: 100vh;
     margin-left: 0;
     width: 100%;
-    /* other main content styles for small screens... */
-    height: 1000px; /* set a fixed height for the main content */
-    overflow-y: scroll; /* add a scrollbar when the content overflows */
+    height: 1000px;
+    overflow-y: scroll; 
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { homeQuery } from './HomePageQuery'
-import Api from '../../services/Api'
+import { homeQuery } from './MusicQuery'
+import Api from '../../services/ContentfulApi'
 import { HOME } from '../../utils/constants'
 import { aboutQuery } from '../AboutPage/AboutQuery'
 

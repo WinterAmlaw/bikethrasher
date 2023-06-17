@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { links, sidebarBackgrounds } from '../utils/constants' 
 import logo from '../assets/logo.jpg'
 import styled from 'styled-components'
-import homeBackground from '../assets/home-background.jpg'
 
 const Sidebar = () => {
   const isSidebarOpen = true
@@ -11,8 +10,6 @@ const Sidebar = () => {
   const currentPathname = location.pathname
   const currentBackground = sidebarBackgrounds[currentPathname]
   const [currentBackgroundPath, setCurrentBackgroundPath] = useState('')
-
-  // console.log(location)
   
   const handleBackground = async () => {
     try {
@@ -36,8 +33,6 @@ const Sidebar = () => {
     backgroundPosition: 'center'
   };
 
-  // console.log(currentBackground)
-  // console.log(homeBackground)
 
   return( 
     <SidebarContainer background={currentBackground}>
@@ -45,7 +40,6 @@ const Sidebar = () => {
         <div className="sidebar-header">
           <img src={logo} className="logo" alt="bikethrasher" />
         </div>
-        {/* <img src={homeBackground} alt="Home Background" /> */}
         <ul className="links">
           {links.map(({id,text,url})=>{
             const isActive = location.pathname === url

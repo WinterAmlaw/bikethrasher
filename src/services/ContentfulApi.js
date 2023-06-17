@@ -25,9 +25,8 @@ const reducer = (state, action) => {
   }
 }
 
-function Api(query, pageConstant) {
-  const [page, setPage] = useState(null);
-  
+function ContentfulApi(query, pageConstant) {
+  const [page, setPage] = useState(null); 
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
@@ -77,23 +76,6 @@ function Api(query, pageConstant) {
       })
   }, [])
 
-  // const [page, setPage] = useState(0)
-  // const renderLimiter = useRef(0)
-
-  //     try {
-  //       if (
-  //         state.page &&
-  //         typeof state.page === 'object' &&
-  //         renderLimiter.current <= 1
-  //       ) {
-  //         setPage(state.page)
-  //         renderLimiter.current = 2
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-    
-
 
   if (state.error) {
     return <div>Something went wrong: {state.error.message}</div>
@@ -104,4 +86,4 @@ function Api(query, pageConstant) {
   }
 }
 
-export default Api;
+export default ContentfulApi;
