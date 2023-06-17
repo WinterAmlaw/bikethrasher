@@ -5,8 +5,8 @@ const initialState = {
   page: null,
   error: null
 }
-const spaceId = process.env.SPACE_ID;
-const accessToken = process.env.ACCESS_TOKEN;
+const spaceId = process.env.REACT_APP_SPACE_ID;
+const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
 
 const reducer = (state, action) => {
   switch (action.type) {

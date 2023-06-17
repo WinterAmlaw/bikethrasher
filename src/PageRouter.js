@@ -7,7 +7,7 @@ import Merch from './pages/MerchPage/Merch'
 import Videos from './pages/VideosPage/Videos'
 import About from './pages/AboutPage/About'
 import Contact from './pages/ContactPage/Contact'
-import Admin from './pages/AdminPage/Admin'
+// import Admin from './pages/AdminPage/Admin'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 const shows = [
   {
