@@ -1,6 +1,6 @@
 import React from 'react'
 // import NavBar from './NavBar'
-import Sidebar from './Sidebar'
+import Sidebar from './components/Sidebar'
 import Music from './pages/MusicPage/Music'
 import Shows from './pages/ShowsPage/Shows'
 import Merch from './pages/MerchPage/Merch'
@@ -30,13 +30,11 @@ const shows = [
   }
 ];
 const PageRouter = () => {
-  const isOnAdminPage = window.location.pathname === '/admin'
   return (
     <Router>
       <div className='container'>
         <div className="sidebar">
-          {/* <NavBar /> */}
-          {!isOnAdminPage && <Sidebar />}
+          <Sidebar />
         </div>
         <main>
           <Routes>

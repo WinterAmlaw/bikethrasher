@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { links, sidebarBackgrounds } from './utils/constants' 
-import logo from './assets//logo.jpg'
+import { links, sidebarBackgrounds } from '../utils/constants' 
+import logo from '../assets/logo.jpg'
 import styled from 'styled-components'
-import homeBackground from './assets/home-background.jpg'
+import homeBackground from '../assets/home-background.jpg'
 
 const Sidebar = () => {
   const isSidebarOpen = true
@@ -16,7 +16,7 @@ const Sidebar = () => {
   
   const handleBackground = async () => {
     try {
-      const dynanamicBackground = await import(`./assets/${sidebarBackgrounds[currentPathname]}`);
+      const dynanamicBackground = await import(`../assets/${sidebarBackgrounds[currentPathname]}`);
       console.log(dynanamicBackground)
       setCurrentBackgroundPath(dynanamicBackground.default)
 

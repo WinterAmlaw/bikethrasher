@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { aboutQuery } from './AboutQuery';
-import Api from '../../Api';
+import Api from '../../services/Api';
 import {ABOUT} from '../../utils/constants'
 import styled from 'styled-components';
 

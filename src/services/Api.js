@@ -1,5 +1,5 @@
 import { useState, useEffect, useReducer } from "react"
-import { HOME, SHOWS, MERCH, VIDEOS, ABOUT, CONTACT } from './utils/constants'
+import { HOME, SHOWS, MERCH, VIDEOS, ABOUT, CONTACT } from '../utils/constants'
 
 const initialState = {
   page: null,
