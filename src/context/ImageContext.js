@@ -39,10 +39,8 @@ const ImagesProvider = ({ children }) => {
           return acc;
         }, {});
         
-        setLoadedImages(loadedImagesObj);
-        setAreImagesLoaded(true);
 
-        // Cache the loaded images using the Cache API
+
         const cacheName = 'image-cache';
         const cache = await caches.open(cacheName);
         await Promise.all(
@@ -51,6 +49,9 @@ const ImagesProvider = ({ children }) => {
             await cache.put(imageUrl, response.clone());
           })
         );
+
+        setLoadedImages(loadedImagesObj);
+        setAreImagesLoaded(true);
       } catch (error) {
         console.error('Error loading and caching images:', error);
       }

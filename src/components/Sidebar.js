@@ -35,6 +35,16 @@ const Sidebar = () => {
     handleBackground();
   }, [currentPathname]);
   
+  const handleLinkClick = () => {
+    if (window.innerWidth <= 1000) {
+      const windowHeight = window.innerHeight;
+      window.scrollTo({
+        top: window.pageYOffset + windowHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   // console.log(`current background path ${currentBackgroundPath}`);
   const sidebarBackgroundStyles = {
     backgroundImage: `url(${currentBackgroundPath})`,
@@ -54,7 +64,7 @@ const Sidebar = () => {
             const isActive = location.pathname === url
             return (
             <li key={id}>
-              <Link to={url} className={isActive ? "active" : ""}>{text}</Link>
+              <Link to={url} onClick={handleLinkClick} className={isActive ? "active" : ""}>{text}</Link>
             </li>
             )
           })}       
@@ -137,8 +147,8 @@ const SidebarContainer = styled.div`
     height: 100%;
     // background-image: url('./assets/home-background.jpg'); 
     // background-size: cover;
-    transition: var(--transition);
-    transform: translate(-100%);
+    // transition: var(--transition);
+    // transform: translate(-100%);
     // z-index: 1;
     box-shadow: -20px 0 20px rgba(0, 0, 0, 0.5), 20px 0 40px rgba(0, 0, 0, 0.8),
                 inset -20px 0 20px rgba(0, 0, 0, 1);
