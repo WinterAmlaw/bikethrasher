@@ -11,25 +11,31 @@ const Sidebar = () => {
   const location = useLocation()
   const currentPathname = location.pathname
   const currentBackground = sidebarBackgrounds[currentPathname]
-  const { loadedImages } = useContext(ImagesContext)
+  const { loadedImages, areImagesLoaded } = useContext(ImagesContext)
   const [currentBackgroundPath, setCurrentBackgroundPath] = useState('')
+  console.log(loadedImages[currentPathname]);
   
   const handleBackground = async () => {
     try {
-      const dynanamicBackground = await import(`../assets/${sidebarBackgrounds[currentPathname]}`);
-      console.log(dynanamicBackground)
-      setCurrentBackgroundPath(dynanamicBackground.default)
+      if(areImagesLoaded){
+        console.log("images are loaded");
+        setCurrentBackgroundPath(loadedImages[currentPathname])
+      } else {
+        const dynanamicBackground = await import(`../assets/${sidebarBackgrounds[currentPathname]}`);
+        console.log(dynanamicBackground)
+        setCurrentBackgroundPath(dynanamicBackground.default)
+      }
 
     } catch (error) {
       console.error(error);
     }
   };
-  console.log(loadedImages);
+
   useEffect(() => {
     handleBackground();
   }, [currentPathname]);
   
-  console.log(`current background path ${currentBackgroundPath}`);
+  // console.log(`current background path ${currentBackgroundPath}`);
   const sidebarBackgroundStyles = {
     backgroundImage: `url(${currentBackgroundPath})`,
     backgroundSize: 'cover',
