@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { aboutQuery } from './AboutQuery';
 import ContentfulApi from '../../services/ContentfulApi';
 import { ABOUT } from '../../utils/constants'
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 
 function About() {
@@ -19,8 +19,13 @@ function About() {
     <>
       <AboutContainer>
         <TextBlobContainer>
-          <Title>About Us</Title>
-          <Paragraph>{aboutSection}</Paragraph>
+          {aboutSection &&           
+              <>
+                <Title>About Us</Title>
+                <Paragraph>{aboutSection}</Paragraph> 
+              </>            
+          }
+          
         </TextBlobContainer>
         <PhotosContainer>
           <Image 
@@ -99,3 +104,4 @@ const Image = styled.img`
     margin: 0 auto;
   }
 `;
+
