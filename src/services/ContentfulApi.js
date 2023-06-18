@@ -50,7 +50,7 @@ function ContentfulApi(query, pageConstant) {
               page = data.homePageCollection.items[0]
               break;
             case SHOWS:
-              page = data.showsPageCollection.items[0]
+              page = data.showListingsCollection.items
               break;
             case MERCH:
               page = data.merchPageCollection.items[0]
@@ -80,7 +80,7 @@ function ContentfulApi(query, pageConstant) {
   if (state.error) {
     return <div>Something went wrong: {state.error.message}</div>
   } else if (!state.page) {
-    return "Loading..."
+    return {}
   } else {
     return state.page
   }

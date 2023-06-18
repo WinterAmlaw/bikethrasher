@@ -1,28 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
+import { showsQuery } from './ShowsQuery';
+import ContentfulApi from '../../services/ContentfulApi';
+import { SHOWS } from '../../utils/constants'
 
 
 
 const Shows = ({ shows }) => {
+  const showsData = ContentfulApi(showsQuery, SHOWS)
+  console.log(showsData);
   return (
+    <>
     <Table>
       <THead>
         <tr>
-          <TH>Date/Time</TH>
           <TH>Event</TH>
           <TH>Location</TH>
+          <TH>Date/Time</TH>
         </tr>
       </THead>
       <tbody>
-        {shows && shows.map(show => (
-          <tr key={show.id}>
-            <TD>{show.dateTime}</TD>
-            <TD>{show.event}</TD>
-            <TD>{show.location}</TD>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+    {showsData[0] && showsData.map(show => {
+      const date = new Date(show.dateTime);
+      const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString(undefined, { hour12: true, hour: 'numeric', minute: '2-digit' })}`;
+      return (
+        <tr key={show.dateTime}>
+          <TD>{show.event}</TD>
+          <TD>{show.location}</TD>
+          <TD>{formattedDate}</TD>
+        </tr>
+      )
+    })}
+    </tbody>
+    </Table>    
+    </>
+
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { aboutQuery } from './AboutQuery';
 import ContentfulApi from '../../services/ContentfulApi';
 import { ABOUT } from '../../utils/constants'
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 
 function About() {
