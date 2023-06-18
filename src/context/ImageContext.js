@@ -33,7 +33,6 @@ const ImagesProvider = ({ children }) => {
             })
           )
         );
-        
         // Convert array of objects to object with keys matching `sidebarBackgrounds`
         const loadedImagesObj = images.reduce((acc, cur) => {
           acc[cur.key] = cur.src;
@@ -42,17 +41,23 @@ const ImagesProvider = ({ children }) => {
         
         setLoadedImages(loadedImagesObj);
         setAreImagesLoaded(true);
+
+        // Cache the loaded images using the Cache API
+        const cacheName = 'image-cache';
+        const cache = await caches.open(cacheName);
+        await Promise.all(
+          Object.values(loadedImagesObj).map(async (imageUrl) => {
+            const response = await fetch(imageUrl);
+            await cache.put(imageUrl, response.clone());
+          })
+        );
       } catch (error) {
-        console.error('Error loading images:', error);
+        console.error('Error loading and caching images:', error);
       }
     };
 
     loadImages();
   }, []);
-
-  useEffect(() => {
-    console.log(loadedImages);
-  }, [loadedImages]);
 
   return (
     <ImagesContext.Provider value={{ loadedImages, areImagesLoaded }}>
@@ -62,5 +67,6 @@ const ImagesProvider = ({ children }) => {
 };
 
 export default ImagesProvider;
+
 
 

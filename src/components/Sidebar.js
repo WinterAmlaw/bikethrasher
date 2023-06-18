@@ -44,7 +44,7 @@ const Sidebar = () => {
 
 
   return( 
-    <SidebarContainer background={currentBackground}>
+    <SidebarContainer>
       <aside style={{...sidebarBackgroundStyles}} className={`${isSidebarOpen? 'sidebar show-sidebar':'sidebar'}`}>
         <div className="sidebar-header">
           <img src={logo} className="logo" alt="bikethrasher" />
