@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { aboutQuery } from './AboutQuery';
 import ContentfulApi from '../../services/ContentfulApi';
 import { ABOUT } from '../../utils/constants'
 import styled from 'styled-components';
-
+import { contentContext } from '../../context/ContentProvider'
 
 function About() {
-  const page = ContentfulApi(aboutQuery, ABOUT)
-  const { aboutSection, img1 } = page
+  // const page = ContentfulApi(aboutQuery, ABOUT)
+  // const { aboutSection, img1 } = page
+  const { aboutData } = useContext(contentContext);
+  const { aboutSection, img1 } = aboutData ?? {};
 
   const [isLoaded, setIsLoaded] = useState(false);
 

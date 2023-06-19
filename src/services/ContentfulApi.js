@@ -44,29 +44,9 @@ function ContentfulApi(query, pageConstant) {
         if (errors) {
           dispatch({ type: 'FETCH_ERROR', payload: errors })
         } else {
-          let page = null;
-          switch(pageConstant) {
-            case HOME:
-              page = data.homePageCollection.items[0]
-              break;
-            case SHOWS:
-              page = data.showListingsCollection.items
-              break;
-            case MERCH:
-              page = data.merchPageCollection.items[0]
-              break;
-            case VIDEOS:
-              page = data.videosPageCollection.items[0]
-              break;
-            case ABOUT:
-              page = data.aboutPageCollection.items[0]
-              break;
-            case CONTACT:
-              page = data.contactPageCollection.items[0]
-              break;
-            default:
-              break;
-          }
+
+          const page = data;
+          
           dispatch({ type: 'FETCH_SUCCESS', payload: page });
         }
       })
