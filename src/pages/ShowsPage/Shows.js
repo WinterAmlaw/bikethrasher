@@ -102,9 +102,28 @@ const TD = styled.td`
   font-size: 24px;
   color: #fff;
   text-align: center;
-  background: linear-gradient(to top, #ff416c, #ff4b2b);
+  // background: linear-gradient(to top, #fg416c, #ff416c);
   border-radius: 10px;
   box-shadow: 3px 3px 4px rgba(255, 76, 91, 0.6);
+  animation: td-slide 10s ease-in-out infinite;
+
+  @keyframes td-slide {
+    0%{
+      box-shadow: 3px 3px 4px rgba(255, 76, 91, 0.6);
+    }
+    25%{
+      box-shadow: 0px 3px 4px rgba(255, 76, 91, 0.6);
+    }
+    50%{
+      box-shadow: -3px 3px 4px rgba(255, 76, 91, 0.6);
+    }
+    75%{
+      box-shadow: 0px 3px 4px rgba(255, 76, 91, 0.6);
+    }
+    100%{
+      box-shadow: 3px 3px 4px rgba(255, 76, 91, 0.6);
+    }
+  }
 `;
 
 export default Shows;
