@@ -5,8 +5,8 @@ import { globalQuery } from '../services/globalQuery';
 export const contentContext = createContext()
 
 const ContentProvider = ({children}) => {
-  const [showsData, setShowsData] = useState({});
-  const [aboutData, setAboutData] = useState({});
+  const [showsData, setShowsData] = useState(null);
+  const [aboutData, setAboutData] = useState(null);
   
   const data = ContentfulApi(globalQuery);
   console.log(data.aboutPageCollection?.items[0]);
