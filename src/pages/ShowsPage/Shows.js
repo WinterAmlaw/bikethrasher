@@ -100,7 +100,7 @@ const TH = styled.th`
 const TD = styled.td`
   padding: 32px;
   font-size: 24px;
-  color: #fff;
+  color: #fa8072;
   text-align: center;
   // background: linear-gradient(to top, #fg416c, #ff416c);
   border-radius: 10px;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled, { keyframes } from 'styled-components';
 
@@ -18,30 +18,41 @@ const MyVideo = () => {
 
   return (
     <>
-    <h1 style={{textAlign:'center'}}>Our Videos</h1>
-    <VideoContainer>
-      {videoUrls.map((video) => {
-        return(
-          <VideoWrapper key={video.id}>
-            <ReactPlayer
-              url={video.url} 
-              width='50vw'
-              height='50vh'
-              onReady={() => setIsLoading(false)}
-            />
-            {isLoading && (
-              <Overlay>
-                <Frame></Frame>
-              </Overlay>
-            )}
-          </VideoWrapper>
-        )
-      })}
-    </VideoContainer>    
+      <h1 style={{textAlign:'center'}}>Our Videos</h1>
+      <VideoContainer>
+        {videoUrls.map((video) => {
+          return(
+            <VideoWrapper key={video.id}>
+              <ReactPlayer
+                url={video.url} 
+                width='50vw'
+                height='50vh'
+                style={{backgroundColor: 'black'}}
+                onReady={() => setIsLoading(false)}
+                config={{
+                  youtube: {
+                    playerVars: { modestbranding: 1 },
+                    preload: true,
+                    preloadMetadata: true,
+                    preloadThumbnail: true,
+                  },
+                }}
+              />
+              {isLoading && (
+                <Overlay>
+                  <Frame>
+                    <PlayButton/>
+                  </Frame>
+                </Overlay>
+              )}
+            </VideoWrapper>
+          )
+        })}
+      </VideoContainer>    
     </>
-
   );
 };
+
 
 const VideoContainer = styled.div`
   display: flex;
@@ -82,7 +93,84 @@ const Frame = styled.div`
   width: 50vw;
   height: 50vh;
   animation: ${pulse} 1.5s ease-in-out infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 
+// const playPulse = keyframes`
+//   from {
+//     transform: scale(1);
+//   }
+
+//   to {
+//     transform: scale(1.05);
+//   }
+// `;
+
+
+const PlayButton = styled.div`
+  background: red;
+  border-radius: 50% / 10%;
+  color: #FFFFFF;
+  font-size: 1em;
+  height: 3em;
+  margin: 20px auto;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  text-indent: 0.1em;
+  transition: all 150ms ease-out;
+  width: 4em;
+
+  &:hover {
+    background: darkorange;
+  }
+
+  &::before { 
+    background: inherit;
+    border-radius: 5% / 50%;
+    bottom: 9%;
+    content: "";
+    left: -5%;
+    position: absolute;
+    right: -5%;
+    top: 9%;
+  }
+
+  &::after {
+    border-style: solid;
+    border-width: 1em 0 1em 1.732em;
+    border-color: transparent transparent transparent white;
+    content: ' ';
+    font-size: 0.75em;
+    height: 0;
+    margin: -1em 0 0 -0.75em;
+    top: 50%;
+    position: absolute;
+    width: 0;
+  }
+`;
+
+
+// const Triangle = styled.div`
+//   width: 0;
+//   height: 0;
+//   border-top: 16px solid transparent;
+//   border-bottom: 16px solid transparent;
+//   border-left: 24px solid white;
+// `;
+
+// const PlayIcon = styled(Triangle)`
+//   margin-left: 14px;
+// `;
+
+// const PlayButtonAnimation = () => (
+//   <PlayButton>
+//   </PlayButton>
+// );
+
+
 export default MyVideo;
+
