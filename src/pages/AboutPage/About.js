@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { aboutQuery } from './AboutQuery';
 import ContentfulApi from '../../services/ContentfulApi';
 import { ABOUT } from '../../utils/constants'
@@ -8,15 +8,20 @@ import { contentContext } from '../../context/ContentProvider'
 function About() {
   // const page = ContentfulApi(aboutQuery, ABOUT)
   // const { aboutSection, img1 } = page
-  const { aboutData } = useContext(contentContext);
+  const { aboutData, cachedImage } = useContext(contentContext);
   const { aboutSection, img1 } = aboutData ?? {};
+
+
 
   const [isLoaded, setIsLoaded] = useState(false);
 
   const handleImageLoad = () => {
     setIsLoaded(true);
-  }
-
+  };
+  useEffect(() => {
+    console.log(cachedImage);
+  }, [aboutData])
+  console.log(cachedImage);
   return (
     <>
       <AboutContainer>
@@ -33,7 +38,7 @@ function About() {
           <Image 
             isVisible={isLoaded}
             onLoad={handleImageLoad}
-            src={img1 && img1.url} 
+            src={cachedImage ? cachedImage : (img1 && img1.url)} 
             alt="description" 
           />
         </PhotosContainer>        

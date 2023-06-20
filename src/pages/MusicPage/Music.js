@@ -1,12 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { homeQuery } from './MusicQuery'
-import Api from '../../services/ContentfulApi'
-import { HOME } from '../../utils/constants'
-import { aboutQuery } from '../AboutPage/AboutQuery'
-
-function Header(props) {
-  return <h1>{props.header}</h1>
-}
 
 function MusicPlayer() {
   return (
@@ -26,7 +18,7 @@ function MusicPlayer() {
         }}
       >
         <iframe
-          style={{ border: 0, width: '100%', height: '100%' }}
+          style={{ border: 0, width: '100%', height: '100%', backgroundColor: '#333333' }}
           src="https://bandcamp.com/EmbeddedPlayer/album=3927403409/size=large/bgcol=333333/linkcol=e99708/transparent=true/"
           seamless
         >
