@@ -25,7 +25,7 @@ const Merch = () => {
     
     fetchProducts();
   }, []);
-  console.log(products[0].onlineStoreUrl);
+  // console.log(products[0].onlineStoreUrl);
   return (
     <Container>
       <h1>Merch</h1>
