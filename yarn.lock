@@ -9113,10 +9113,10 @@ shell-quote@^1.7.3:
   resolved "https://registry.npmjs.org/shell-quote/-/shell-quote-1.8.1.tgz"
   integrity sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==
 
-shopify-api-node@^3.12.4:
-  version "3.12.4"
-  resolved "https://registry.npmjs.org/shopify-api-node/-/shopify-api-node-3.12.4.tgz"
-  integrity sha512-sxpbLGt7ROzmmWM5iAgl2IPvNcI3h/SRxH88pRNkrsTK3vbVFq496/SbBwySgr+lnI9elqRFBvjIu4qWZzIfnw==
+shopify-api-node@^3.12.5:
+  version "3.12.5"
+  resolved "https://registry.npmjs.org/shopify-api-node/-/shopify-api-node-3.12.5.tgz"
+  integrity sha512-A8uLkyxQWkEHcQDRtmIlTY8bRQDsa9KZrrGzarlH7bLZ6QwsfTCwoISYCuzJrF9dgMuilUVsv1VCMflf9lVWVg==
   dependencies:
     got "^11.1.4"
     lodash "^4.17.10"
