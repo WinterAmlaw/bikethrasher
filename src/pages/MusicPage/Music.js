@@ -1,83 +1,73 @@
 import React, { useState, useRef } from 'react';
-import styled from 'styled-components';
+import styled, {css, keyframes } from 'styled-components';
 
-const songs = [
+const albums = [
   {
-    title: "Song 1",
-    url: "https://bandcamp.com/EmbeddedPlayer/album=3927403409/size=large/bgcol=333333/linkcol=e99708/transparent=true/",
+    title: "Album 1",
+    url: "https://bandcamp.com/EmbeddedPlayer/album=3927403409/size=large/bgcol=333333/linkcol=2ebd35/artwork=large/transparent=true/",
   },
   {
-    title: "Song 2",
-    url: "https://bandcamp.com/EmbeddedPlayer/album=1234567890/size=large/bgcol=333333/linkcol=e99708/transparent=true/",
+    title: "Album 2",
+    url: "https://bandcamp.com/EmbeddedPlayer/album=0987654321/size=large/bgcol=333333/linkcol=e99708/transparent=true/",
   },
-  // Add more songs as needed
+  // Add more albums as needed
 ];
 
 const MusicPlayer = () => {
-  const [selectedSong, setSelectedSong] = useState(songs[0]);
+  const [selectedAlbum, setSelectedAlbum] = useState(albums[0]);
   const [coinActivated, setCoinActivated] = useState(false);
-  const iframeRef = useRef(null);
 
-
-  const handleSongClick = (song) => {
-    setSelectedSong(song);
+  const handleAlbumClick = (album) => {
+    setSelectedAlbum(album);
     setCoinActivated(false);
   };
 
-  const handleCoinDrop = async (event) => {
+  const handleCoinDrop = (event) => {
     event.preventDefault();
     setCoinActivated(true);
-    setSelectedSong(songs[0]);
+    setSelectedAlbum(albums[0]);
   };
 
-
   return (
+    <>
+
     <Container>
-      <Wrapper>
-        {/* Coin slot */}
-        <CoinSlot
-          coinActivated={coinActivated}
-          onDragOver={(event) => event.preventDefault()}
-          onDrop={handleCoinDrop}
-        >
-          { (
-            <Coin
-              draggable="true"
-              onDragStart={(event) => event.dataTransfer.setData("text/plain", "")}
-            />
-          )}
-          <CoinHole />
-        </CoinSlot>
 
-        {/* Song buttons */}
-        <div style={{ marginTop: "20px" }}>
-          {songs.map((song) => (
-            <SongButton key={song.title} onClick={() => handleSongClick(song)}>
-              {song.title}
-            </SongButton>
-          ))}
-        </div>
+      <Wrapper
+        coinActivated={coinActivated}
+      >
 
-        {/* Music player */}
-        {selectedSong && (
+
+        {selectedAlbum && (
           <iframe
-
             style={{
               border: 0,
               width: "100%",
               height: "90%",
               backgroundColor: "#333",
             }}
-            src={selectedSong.url}
+            src={selectedAlbum.url}
             seamless
           >
-            <a href="https://bikethrasher.bandcamp.com/album/the-cursed-ep">
-              {selectedSong.title}
-            </a>
+            <a href={selectedAlbum.url}>{selectedAlbum.title}</a>
           </iframe>
         )}
       </Wrapper>
+    <CoinSlot>
+      <CoinHole 
+        onDragOver={(event) => event.preventDefault()}
+        onDrop={handleCoinDrop} />
+    </CoinSlot>
+    
+
     </Container>
+    <Coin
+      draggable="true"
+      onDragStart={(event) => event.dataTransfer.setData("text/plain", "")}
+    />  
+
+    </>
+
   );
 };
 const Music = () => {
@@ -88,27 +78,57 @@ export default Music;
 
 const Container = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
+  // background-color: #574830;
+
+`;
+
+const flicker = keyframes`
+  from {
+    box-shadow: inset 0px 0px 10px 4px #00D4FF, 0px 0px 20px 4px #FF007F;
+  }
+  
+  to {
+    box-shadow:
+      -10px -10px 20px rgba(255, 255, 255, 0.1),
+      10px 10px 20px rgba(0, 0, 0, 0.5);
+  }
 `;
 
 const Wrapper = styled.div`
   max-width: 100%;
   width: 350px;
-  height: 621px;
-  background-color: #111111;
-  box-shadow: inset -5px -5px 10px rgba(255, 255, 255, 0.05),
-    inset 5px 5px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
-  padding: 20px;
+  height: 600px;
+  border-radius: 60px 60px 20px 20px;
+  ${({ coinActivated }) =>
+    coinActivated
+      ? css`
+          animation: ${flicker} 0.1s linear;
+          animation-iteration-count: 2;
+          box-shadow: inset 0px 0px 10px 4px #00d4ff, 0px 0px 20px 4px #ff007f;
+        `
+      : css`
+          box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.1),
+            10px 10px 20px rgba(0, 0, 0, 0.5);
+        `}
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.2s ease-in-out;
 `;
 
 const CoinSlot = styled.div`
-  background-color: ${({ coinActivated }) =>
-    coinActivated ? '#fff8dc' : '#bfa87d'};
-  height: 50px;
+  background-color: gray;
+  height: 70px;
+  width: 60px;
+  border-radius: 0px 20px 20px 0px;
   text-align: center;
   position: relative;
   box-shadow: ${({ coinActivated }) =>
@@ -118,9 +138,10 @@ const CoinSlot = styled.div`
 `;
 
 const Coin = styled.div`
-  position: absolute;
-  top: calc(50% - 20px);
-  left: -25px;
+  position: relative;
+  // top: calc(50% - 20px);
+  // left: -25px;
+  margin-left:30px;
   width: 50px;
   height: 50px;
   background: linear-gradient(to bottom, #f7ff00, #ffd300);
@@ -130,30 +151,16 @@ const Coin = styled.div`
 
 const CoinHole = styled.div`
   position: absolute;
-  top: calc(50% - 15px);
-  right: -30px;
-  width: 100px;
-  height: 30px;
-  border: 4px solid #111;
+  top: 10px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+  // border: 4px solid #111;
+  border-radius: 100%;
   border-bottom: none;
-  background-color: #e0e0e0;
-  background-image: url('https://www.transparenttextures.com/patterns/padded-grey.png');
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: black;
+  // background-image: url('https://www.transparenttextures.com/patterns/padded-grey.png');
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 `;
 
-const SongButton = styled.button`
-  background: #f8f8f8;
-  color: #111;
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-  width: 100%;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  font-weight: bold;
-  cursor: pointer;
 
-  &:hover {
-    background-color: #ddd;
-  }
-`;
