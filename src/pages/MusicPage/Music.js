@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useContext } from 'react';
 import styled, {css, keyframes } from 'styled-components';
+import { BandCampContext } from '../../context/BandCampProvider';
 
 const albums = [
   {
@@ -16,6 +17,9 @@ const albums = [
 const MusicPlayer = () => {
   const [selectedAlbum, setSelectedAlbum] = useState(albums[0]);
   const [coinActivated, setCoinActivated] = useState(false);
+
+  const {iframeComponent} = useContext(BandCampContext)
+  console.log(iframeComponent);
 
   const handleAlbumClick = (album) => {
     setSelectedAlbum(album);
@@ -36,8 +40,6 @@ const MusicPlayer = () => {
       <Wrapper
         coinActivated={coinActivated}
       >
-
-
         {selectedAlbum && (
           <iframe
             style={{

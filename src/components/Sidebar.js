@@ -4,6 +4,7 @@ import { links, sidebarBackgrounds } from '../utils/constants'
 import { ImagesContext } from '../context/ImageContext';
 import logo from '../assets/logo.jpg'
 import styled from 'styled-components'
+import { BandCampContext } from '../context/BandCampProvider';
 
 
 const Sidebar = () => {
@@ -12,6 +13,7 @@ const Sidebar = () => {
   const currentPathname = location.pathname
   const currentBackground = sidebarBackgrounds[currentPathname]
   const { loadedImages, areImagesLoaded } = useContext(ImagesContext)
+  const { iframeComponent } = useContext(BandCampContext)
   const [currentBackgroundPath, setCurrentBackgroundPath] = useState('')
   console.log(loadedImages[currentPathname]);
   
@@ -69,6 +71,8 @@ const Sidebar = () => {
             )
           })}       
         </ul>
+      {iframeComponent}
+
       </aside>
     </SidebarContainer>
   )
