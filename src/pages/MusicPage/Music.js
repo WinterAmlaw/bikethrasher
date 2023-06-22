@@ -139,14 +139,63 @@ const CoinSlot = styled.div`
 
 const Coin = styled.div`
   position: relative;
-  // top: calc(50% - 20px);
-  // left: -25px;
+  // initial styles
+  top: 0px;
+  left: -25px;
+  margin-top: 0px;
   margin-left:30px;
   width: 50px;
   height: 50px;
-  background: linear-gradient(to bottom, #f7ff00, #ffd300);
+  background: linear-gradient(135deg, #fff 15%, #ccc 40%, #888 60%, #555 85%, #222);
   border-radius: 50%;
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+
+  /* Animation */
+  animation-name: dropAndRoll;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+
+
+  @keyframes dropAndRoll {
+    /* Drop down to bottom*/
+    0%{
+      top:-100%;
+    }
+  
+    50% {
+      top: -50px;
+      transform: rotateZ(360deg);
+    }
+
+    55% {
+      top: -65px;
+      // transform: rotateZ(0deg);
+    }
+
+    60% {
+      top: -50px;
+      transform: rotateZ(0deg);
+    }
+
+    65% {
+      top: -60px;
+      transform: rotateZ(0deg);
+    }
+
+    /* Roll to right */
+    95% {
+      top: -50px;
+      // left: calc(100% + 25px);
+      transform: rotateZ(1080deg);
+    }
+
+    100% {
+      top: -50px;
+      // left: calc(100% + 25px);
+      // left:100px;
+      transform: rotateZ(1080deg) rotateY(180deg);
+    }
+  }
 `;
 
 const CoinHole = styled.div`
