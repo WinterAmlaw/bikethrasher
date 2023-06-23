@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import fbIcon from '../assets/facebook-icon.png';
 import instaIcon from '../assets/instagram-icon.png';
@@ -6,8 +7,10 @@ import spotifyIcon from '../assets/spotify-icon.png';
 import tictocIcon from '../assets/tictoc-icon.png';
 
 const SocialMediaLinks = () => {
+  const currentPath = useLocation().pathname;
+  console.log(currentPath);
   return (
-    <SocialContainer>
+    <SocialContainer currentPath={currentPath}>
       <SocialLink href="https://www.facebook.com/bkthrshr">
         <i className=""><img src={fbIcon} alt="" /></i>
       </SocialLink>
@@ -27,6 +30,9 @@ const SocialMediaLinks = () => {
 export default SocialMediaLinks;
 
 const SocialContainer = styled.div`
+  display: flex;
+  flex-direction: ${({currentPath}) => currentPath === '/videos' ? 'column' : 'row'};
+
   position: fixed;
   top: 0;
   right: 0;
@@ -41,7 +47,8 @@ const SocialLink = styled.a`
   width: 40px;
   background-color: #fff;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
+  margin: 1rem;
   transition: all 0.3s ease-in-out;
   
   &:last-child {
