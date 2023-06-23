@@ -7,6 +7,7 @@ import Videos from './pages/VideosPage/Videos'
 import About from './pages/AboutPage/About'
 import Contact from './pages/ContactPage/Contact'
 import ImagesProvider from './context/ImageContext'
+import SocialMediaLinks from './components/SocialMediaLinks'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 const shows = [
@@ -32,6 +33,7 @@ const shows = [
 const App = () => {
   return (
     <Router>
+      <SocialMediaLinks/>
       <div className='container'>
         <div className="sidebar">
           <ImagesProvider>
