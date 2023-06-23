@@ -14,7 +14,6 @@ const SocialMediaLinks = () => {
 
   return (
     <SocialContainer currentPath={currentPath} >
-      {/* Set animation delay based on index */}
       <SocialLink style={{ animationDelay: '0.1s' }} href="https://www.facebook.com/bkthrshr">
         <i><img src={fbIcon} alt="" /></i>
       </SocialLink>
@@ -125,7 +124,6 @@ const SocialLink = styled.a`
     color: #e1306c;
   }
   
-  /* Define keyframe animation */
   @keyframes fallAndBounce {
     0% {
       transform: translateY(-100%);
