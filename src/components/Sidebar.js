@@ -104,7 +104,6 @@ const ResponsiveIframeContainer = styled.div`
 const SidebarContainer = styled.div`
   text-align: center;
   padding-bottom: 2rem;
-
   .sidebar-header {
     display: flex;
     justify-content: space-between;

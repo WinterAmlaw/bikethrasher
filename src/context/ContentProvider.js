@@ -11,8 +11,8 @@ const ContentProvider = ({children}) => {
 
   
   const data = ContentfulApi(globalQuery);
-  console.log(data.aboutPageCollection?.items[0]);
-  console.log(`contentful provider triggered`);
+  // console.log(data.aboutPageCollection?.items[0]);
+  // console.log(`contentful provider triggered`);
 
   useEffect(() => {
     setAboutData(data.aboutPageCollection?.items[0]);
@@ -21,7 +21,7 @@ const ContentProvider = ({children}) => {
   }, [data]);
 
   let { img1 } = data.aboutPageCollection?.items[0] ?? {};
-   // This effect runs only once, on the initial component render
+  
   useEffect(() => {
     img1 && window.caches.open('my-cache')
       .then(cache => {

@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { aboutQuery } from './AboutQuery';
-import ContentfulApi from '../../services/ContentfulApi';
-import { ABOUT } from '../../utils/constants'
+// import { aboutQuery } from './AboutQuery';
+// import ContentfulApi from '../../services/ContentfulApi';
+// import { ABOUT } from '../../utils/constants'
 import styled from 'styled-components';
-import { contentContext } from '../../context/ContentProvider'
+import { contentContext } from '../context/ContentProvider'
 
 function About() {
   // const page = ContentfulApi(aboutQuery, ABOUT)

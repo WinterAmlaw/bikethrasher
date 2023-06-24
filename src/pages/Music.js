@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import styled, {css, keyframes } from 'styled-components';
-import { BandCampContext } from '../../context/BandCampProvider';
+import { BandCampContext } from '../context/BandCampProvider';
 
 const albums = [
   {
@@ -165,34 +165,34 @@ const Coin = styled.div`
     }
   
     50% {
-      top: -50px;
+      top: -80px;
       transform: rotateZ(360deg);
     }
 
     55% {
-      top: -65px;
+      top: -95px;
       // transform: rotateZ(0deg);
     }
 
     60% {
-      top: -50px;
+      top: -80px;
       transform: rotateZ(0deg);
     }
 
     65% {
-      top: -60px;
+      top: -90px;
       transform: rotateZ(0deg);
     }
 
     /* Roll to right */
     95% {
-      top: -50px;
+      top: -80px;
       // left: calc(100% + 25px);
       transform: rotateZ(1080deg);
     }
 
     100% {
-      top: -50px;
+      top: -80px;
       // left: calc(100% + 25px);
       // left:100px;
       transform: rotateZ(1080deg) rotateY(180deg);

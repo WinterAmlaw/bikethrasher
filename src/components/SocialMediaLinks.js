@@ -82,11 +82,22 @@ const SocialContainer = styled.div`
   display: flex;
   flex-direction: ${({currentPath}) => currentPath === '/videos' ? 'column' : 'row'};
   animation: ${({currentPath}) =>  currentPath === '/videos' ? expandInDown :  expandInRight} 0.5s ease-in-out forwards;
-
-  position: fixed;
+  position: fixed; 
   top: 0;
   right: 0;
   padding: 1rem;
+  @media screen and (max-width: 1000px) {
+    flex-direction: row;
+    position: static;
+    margin-top: 100vh;
+    margin-bottom: -100vh;
+    // align-self: flex-end;
+    // align-items: center;
+    justify-content: center;
+    // top:0;
+    // right:0;
+    left:auto;
+  }
 `;
 
 const SocialLink = styled.a`
