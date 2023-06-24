@@ -51,7 +51,8 @@ const Sidebar = () => {
   const sidebarBackgroundStyles = {
     backgroundImage: `url(${currentBackgroundPath})`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center'
+    backgroundPosition: 'center',
+    maxHeight: 'fit',
   };
 
 
@@ -71,15 +72,39 @@ const Sidebar = () => {
             )
           })}       
         </ul>
-      {iframeComponent}
+        {/* <ResponsiveIframeContainer> */}
+          {iframeComponent}
+        {/* </ResponsiveIframeContainer> */}
+  
 
       </aside>
     </SidebarContainer>
   )
 }
 
+const ResponsiveIframeContainer = styled.div`
+  position: relative;
+  // height: 0;
+  padding-bottom: 56.25%; /* This is to maintain an aspect ratio of 16:9 */
+  // margin-bottom: 100px;
+
+  iframe {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    width: 100%;
+    height: 100%;
+  margin-bottom: 100px;
+
+  }
+  // @media screen and (max-width: 1000px){
+
+  // }
+`;
 const SidebarContainer = styled.div`
   text-align: center;
+  padding-bottom: 2rem;
+
   .sidebar-header {
     display: flex;
     justify-content: space-between;
@@ -115,7 +140,7 @@ const SidebarContainer = styled.div`
   .links {
     display: flex;
     flex-direction: column;
-    margin-top: 30%;
+    margin-top: 25%;
     margin-bottom: 2rem;
     font-weight: 700;
     color:var(--color-header-link)
@@ -164,6 +189,10 @@ const SidebarContainer = styled.div`
       top: unset;
       bottom: 0;
       transform: translate(0);
+    }
+    .links {
+      margin-top: 20%;
+      margin-bottom: 0rem;
     }
   }
   .show-sidebar {
