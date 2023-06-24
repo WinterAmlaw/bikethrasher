@@ -14,6 +14,7 @@ const SocialMediaLinks = () => {
 
   return (
     <SocialContainer currentPath={currentPath} >
+      {/* Set animation delay based on index */}
       <SocialLink style={{ animationDelay: '0.1s' }} href="https://www.facebook.com/bkthrshr">
         <i><img src={fbIcon} alt="" /></i>
       </SocialLink>
@@ -124,22 +125,23 @@ const SocialLink = styled.a`
     color: #e1306c;
   }
   
-  // @keyframes fallAndBounce {
-  //   0% {
-  //     transform: translateY(-100%);
-  //   }
-  //   25% {
-  //     transform: translateY(20%);
-  //   }
-  //   50% {
-  //     transform: translateY(-10%);
-  //   }
-  //   75% {
-  //     transform: translateY(5%);
-  //   }
-  //   100% {
-  //     transform: translateY(0);
-  //   }
-  // }
+  /* Define keyframe animation */
+  @keyframes fallAndBounce {
+    0% {
+      transform: translateY(-100%);
+    }
+    25% {
+      transform: translateY(20%);
+    }
+    50% {
+      transform: translateY(-10%);
+    }
+    75% {
+      transform: translateY(5%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 `;
 

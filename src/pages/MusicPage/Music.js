@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import styled, {css, keyframes } from 'styled-components';
-import { BandCampContext } from '../context/BandCampProvider';
+import { BandCampContext } from '../../context/BandCampProvider';
 
 const albums = [
   {

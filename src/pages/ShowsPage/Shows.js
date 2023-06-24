@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { contentContext } from '../context/ContentProvider';
+import { contentContext } from '../../context/ContentProvider';
 
 const Shows = () => {
   const { showsData } = useContext(contentContext);
