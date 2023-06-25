@@ -67,6 +67,34 @@ const ShowsWrapper = styled.div`
       text-shadow: 3px 3px 0 #f8dada, 5px 5px 0 black, 7px 7px 0 #ff5c5c;
     }
   }
+  @media only screen and (max-width: 780px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+      width: 100%;
+    }
+    tbody{
+      margin-top: 12rem;
+    }
+    tr{
+      margin-top: 4rem;
+    }
+    td {
+      text-align: center;
+      width: 80%;
+    }
+  
+    td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
 `;
 
 const Table = styled.table`
