@@ -57,9 +57,9 @@ const Sidebar = () => {
   }, []);
 
   let iframeSize = 'large';
-  if (screenWidth <= 1000) {
-    iframeSize = 'small';
-  }
+  // if (screenWidth <= 1000) {
+  //   iframeSize = 'small';
+  // }
 
 
   // console.log(`current background path ${currentBackgroundPath}`);
@@ -68,6 +68,9 @@ const Sidebar = () => {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     maxHeight: 'fit',
+    // height: '1000px',
+    minHeight: '500px',
+    // overflowY: 'auto',
   };
 
 
@@ -77,25 +80,29 @@ const Sidebar = () => {
         <div className="sidebar-header">
           <img src={logo} className="logo" alt="bikethrasher" />
         </div>
-        <ul className="links">
-          {links.map(({id,text,url})=>{
-            const isActive = location.pathname === url
-            return (
-            <li key={id}>
-              <Link to={url} onClick={handleLinkClick} className={isActive ? "active" : ""}>{text}</Link>
-            </li>
-            )
-          })}       
-        </ul>
+        <div className="links-container">
+          <ul className="links">
+            {links.map(({id,text,url})=>{
+              const isActive = location.pathname === url
+              return (
+              <li key={id}>
+                <Link to={url} onClick={handleLinkClick} className={isActive ? "active" : ""}>{text}</Link>
+              </li>
+              )
+            })}       
+          </ul>
+          <iframe 
+            style={{border: '0', width: '75%', height: '120px'}} 
+            src={`https://bandcamp.com/EmbeddedPlayer/album=3927403409/size=${iframeSize}/bgcol=333333/linkcol=2ebd35/tracklist=false/artwork=none/transparent=true/`} 
+            seamless>
+            <a href="https://bikethrasher.bandcamp.com/album/the-cursed-ep">The Cursed EP by bikethrasher</a>
+          </iframe>
+        </div>
+
         {/* <ResponsiveIframeContainer> */}
           {/* {iframeComponent} */}
         {/* </ResponsiveIframeContainer> */}
-        <iframe 
-          style={{border: '0', width: '75%', height: '120px'}} 
-          src={`https://bandcamp.com/EmbeddedPlayer/album=3927403409/size=${iframeSize}/bgcol=333333/linkcol=2ebd35/tracklist=false/artwork=none/transparent=true/`} 
-          seamless>
-          <a href="https://bikethrasher.bandcamp.com/album/the-cursed-ep">The Cursed EP by bikethrasher</a>
-        </iframe>
+
 
 
       </aside>
@@ -228,6 +235,33 @@ const SidebarContainer = styled.div`
   //     display: none;
   //   }
   // }
+  @media (max-height: 600px) {
+    .links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr 1fr;
+      grid-column-gap: 100px;
+
+      margin-top: -200px;
+      margin-bottom: 50px;
+
+    }
+
+    .links-container {
+      display: flex;
+      justify-content: center;
+      align-items: left;
+      flex-direction: column;
+      min-height: 600px;
+      overscroll-y: auto;
+    }
+
+    iframe {
+      display: flex;
+      align-self: center;
+    }
+  }
+
 `
 
 export default Sidebar
