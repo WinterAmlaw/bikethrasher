@@ -55,13 +55,11 @@ const MusicPlayer = () => {
           </iframe>
         )}
       </Wrapper>
-    <CoinSlot>
-      <CoinHole 
-        onDragOver={(event) => event.preventDefault()}
-        onDrop={handleCoinDrop} />
-    </CoinSlot>
-    
-
+      <CoinSlot>
+        <CoinHole 
+          onDragOver={(event) => event.preventDefault()}
+          onDrop={handleCoinDrop} />
+      </CoinSlot>
     </Container>
     <Coin
       draggable="true"
@@ -85,6 +83,7 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   // background-color: #574830;
+  margin-top: -5vh;
 
 `;
 
@@ -124,6 +123,14 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   transition: box-shadow 0.2s ease-in-out;
+  @media (max-width: 400px){
+    width: 300px;
+  }
+  @media (max-width: 768px) {
+    animation: ${flicker} 0.1s linear;
+    animation-iteration-count: 2;
+    box-shadow: inset 0px 0px 10px 4px #00d4ff, 0px 0px 20px 4px #ff007f;
+  }
 `;
 
 const CoinSlot = styled.div`
@@ -137,6 +144,9 @@ const CoinSlot = styled.div`
     coinActivated
       ? '0px 0px 10px rgba(255, 255, 255, 0.8), inset 0px 0px 10px rgba(255, 255, 255, 0.5)'
       : ''};
+  @media (max-width: 768px) {
+    display: none;
+  }    
 `;
 
 const Coin = styled.div`
@@ -198,6 +208,9 @@ const Coin = styled.div`
       transform: rotateZ(1080deg) rotateY(180deg);
     }
   }
+  @media (max-width: 768px) {
+    display: none;
+  }  
 `;
 
 const CoinHole = styled.div`
