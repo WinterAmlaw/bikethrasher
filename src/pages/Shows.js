@@ -68,6 +68,7 @@ const ShowsWrapper = styled.div`
     }
   }
   @media only screen and (max-width: 780px) {
+    margin-top: -8vh;
     table,
     thead,
     tbody,
@@ -77,15 +78,18 @@ const ShowsWrapper = styled.div`
       display: block;
       width: 100%;
     }
+
     tbody{
-      margin-top: 12rem;
+      padding-top: 2px;
     }
     tr{
       margin-top: 4rem;
+
     }
     td {
       text-align: center;
       width: 80%;
+      margin: 0 auto;
     }
   
     td:before {
@@ -114,6 +118,12 @@ const THead = styled.thead`
     height: 70px;
     border-bottom: 1px solid #e5e5e5;
     background-image: linear-gradient(90deg, rgba(250, 128, 114, 0.4) 0%, rgba(250, 128, 114, 0) 100%);
+  }
+
+  @media only screen and (max-width: 780px) {
+    tr{
+      display: none;
+    }
   }
 `;
 
