@@ -15,6 +15,7 @@ const Sidebar = () => {
   const { loadedImages, areImagesLoaded } = useContext(ImagesContext)
   const { iframeComponent } = useContext(BandCampContext)
   const [currentBackgroundPath, setCurrentBackgroundPath] = useState('')
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   console.log(loadedImages[currentPathname]);
   
   const handleBackground = async () => {
@@ -47,6 +48,20 @@ const Sidebar = () => {
     }
   };
 
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  let iframeSize = 'large';
+  if (screenWidth <= 1000) {
+    iframeSize = 'small';
+  }
+
+
   // console.log(`current background path ${currentBackgroundPath}`);
   const sidebarBackgroundStyles = {
     backgroundImage: `url(${currentBackgroundPath})`,
@@ -73,9 +88,15 @@ const Sidebar = () => {
           })}       
         </ul>
         {/* <ResponsiveIframeContainer> */}
-          {iframeComponent}
+          {/* {iframeComponent} */}
         {/* </ResponsiveIframeContainer> */}
-  
+        <iframe 
+          style={{border: '0', width: '75%', height: '120px'}} 
+          src={`https://bandcamp.com/EmbeddedPlayer/album=3927403409/size=${iframeSize}/bgcol=333333/linkcol=2ebd35/tracklist=false/artwork=none/transparent=true/`} 
+          seamless>
+          <a href="https://bikethrasher.bandcamp.com/album/the-cursed-ep">The Cursed EP by bikethrasher</a>
+        </iframe>
+
 
       </aside>
     </SidebarContainer>
@@ -190,7 +211,7 @@ const SidebarContainer = styled.div`
       transform: translate(0);
     }
     .links {
-      margin-top: 20%;
+      margin-top: 10%;
       margin-bottom: 0rem;
     }
   }
