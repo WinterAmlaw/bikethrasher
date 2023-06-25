@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import styled, { keyframes } from 'styled-components';
 
@@ -15,6 +15,20 @@ const videoUrls = [
 
 const MyVideo = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  let playerWidth = '45vw';
+  if (screenWidth <= 1000) {
+    playerWidth = '80vw';
+  }
 
   return (
     <>
@@ -25,7 +39,7 @@ const MyVideo = () => {
             <VideoWrapper key={video.id}>
               <ReactPlayer
                 url={video.url} 
-                width='50vw'
+                width={playerWidth}
                 height='50vh'
                 style={{backgroundColor: 'black'}}
                 onReady={() => setIsLoading(false)}
@@ -96,6 +110,10 @@ const Frame = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 1000px) {
+    width: 80vw;
+  }
 `;
 
 

@@ -81,6 +81,10 @@ const ProductCard = styled.a`
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
   }
+
+  @media screen and (max-width: 1000px){
+    width: 60%;
+  }
 `;
 
 const ProductImage = styled.img`
