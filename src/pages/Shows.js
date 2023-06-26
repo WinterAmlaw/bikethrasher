@@ -80,16 +80,19 @@ const ShowsWrapper = styled.div`
     }
 
     tbody{
-      padding-top: 2px;
+      // padding-top: 2px;
     }
     tr{
-      margin-top: 4rem;
+      margin-top: 1rem;
+      border: 3px solid rgba(255, 76, 91, 0.6);
+      border-radius: 18px;
 
     }
     td {
       text-align: center;
       width: 80%;
       margin: 0 auto;
+
     }
   
     td:before {
@@ -161,6 +164,12 @@ const TD = styled.td`
     100%{
       box-shadow: 3px 3px 4px rgba(255, 76, 91, 0.6);
     }
+  }
+
+  @media screen and (max-width: 780px){
+    animation: none;
+    box-shadow: none;
+    padding: 8px;
   }
 `;
 

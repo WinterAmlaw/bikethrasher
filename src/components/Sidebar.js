@@ -235,7 +235,7 @@ const SidebarContainer = styled.div`
   //     display: none;
   //   }
   // }
-  @media (max-height: 600px) {
+  @media (max-height: 650px) {
     .links {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
