@@ -36,6 +36,7 @@ const Contact = () => {
     <>
       {!showConfirmation ? (
         <StyledForm onSubmit={sendEmail}>
+          <h1>Contact Us</h1>
           <StyledLabel>Name</StyledLabel>
           <StyledInput type="text" name="user_name" value={name} onChange={(e) => setName(e.target.value)} />
           <StyledLabel>Email</StyledLabel>
@@ -46,6 +47,7 @@ const Contact = () => {
           <StyledTextarea name="message" value={message} onChange={(e) => setMessage(e.target.value)} />
           <StyledButton type="submit">Send</StyledButton>
         </StyledForm>
+
       ) : (
         <StyledConfirmation>Your message has been delivered! <br></br> We will get back to you shortly.</StyledConfirmation>
       )}
@@ -87,6 +89,9 @@ const StyledInput = styled.input`
     outline: none;
     box-shadow: 0 0 0 2px #007bff;
   }
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `
 
 const StyledTextarea = styled.textarea`
@@ -104,6 +109,9 @@ const StyledTextarea = styled.textarea`
     outline: none;
     box-shadow: 0 0 0 2px #007bff;
   }
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `
 
 const StyledButton = styled.button`
@@ -112,7 +120,7 @@ const StyledButton = styled.button`
   font-weight: bold;
   border: none;
   border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   cursor: pointer;
   width: 100px;
   &:hover {

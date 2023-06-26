@@ -69,6 +69,7 @@ const ShowsWrapper = styled.div`
   }
   @media only screen and (max-width: 780px) {
     margin-top: -8vh;
+    margin-bottom: 0px;
     table,
     thead,
     tbody,
